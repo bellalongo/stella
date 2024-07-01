@@ -218,12 +218,6 @@ class ConvNN(object):
             seeds = np.array([seeds])
 
         self.epochs = epochs
-        
-        # Print the size of the validation data
-        print("Validation data shape:", self.ds.val_data.shape)
-        print("Validation labels shape:", self.ds.val_labels.shape)
-        print("Training data shape:", self.ds.train_data.shape)
-        print("Training labels shape:", self.ds.train_labels.shape)
 
 
         # CREATES TABLES FOR SAVING DATA
@@ -524,6 +518,8 @@ class ConvNN(object):
         model = keras.models.load_model(modelname)
 
         self.model = model
+
+        print(model.summary())
 
         # GETS REQUIRED INPUT SHAPE FROM MODEL
         cadences = model.input.shape[1]
